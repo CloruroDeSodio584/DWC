@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+button:focus {
+    outline: 0;
+}
+
+#tituloPagWeb{
+	color: white; 
+	width: 500px;
+	
+	font-family: 'Roboto Mono', monospace;
+}
+
+/* CARDS TOOLS */
+
+
