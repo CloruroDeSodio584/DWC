@@ -24,22 +24,38 @@ public class Usuario implements Serializable {
 		private int edad;
 		private String correo;
 		private String password;
+		private int tipo;
 		
 		@OneToMany(mappedBy="usuarios", cascade=CascadeType.ALL)
 		public Set<Juegoteca> juegotecas = new HashSet<Juegoteca>();
 		
 		public Usuario() {
 			
-		}
-
-		public Usuario(String nombre, String apellidos, int edad, String correo, String password) {
+		}	
+	
+		
+		public Usuario(String nombre, String apellidos, int edad, String correo, String password, int tipo) {
 			super();
 			this.nombre = nombre;
 			this.apellidos = apellidos;
 			this.edad = edad;
 			this.correo = correo;
 			this.password = password;
+			this.tipo = tipo;
 		}
+
+
+		
+
+		public int getTipo() {
+			return tipo;
+		}
+
+
+		public void setTipo(int tipo) {
+			this.tipo = tipo;
+		}
+
 
 		public int getIdUsuario() {
 			return idUsuario;
