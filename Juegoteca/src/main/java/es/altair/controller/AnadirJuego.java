@@ -6,6 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.altair.bean.Genero;
+import es.altair.bean.Juego;
+import es.altair.dao.GeneroDAO;
+import es.altair.dao.GeneroDAOImplHibernate;
+import es.altair.dao.JuegoDAO;
+import es.altair.dao.JuegoDAOImplHibernate;
+
 /**
  * Servlet implementation class AnadirJuego
  */
@@ -27,9 +34,22 @@ public class AnadirJuego extends HttpServlet {
 		String titulo = request.getParameter("titulo");
 		String numJugadores = request.getParameter("numJugadores");
 		String descripcion =  request.getParameter("descripcion");
-		String pegi = request.getParameter("pegi");
+		int pegi = Integer.parseInt(request.getParameter("pegi"));
 		
+		int idgenero = Integer.parseInt(request.getParameter("genero"));
 		
+		GeneroDAO gDAO = new GeneroDAOImplHibernate();	
+		Genero nuevoGenero = gDAO.ObtenerGeneroPorId(idgenero);
+		
+		Juego nuevoJuego = new Juego(titulo, numJugadores, descripcion, pegi, nuevoGenero);
+		
+		JuegoDAO jDAO = new JuegoDAOImplHibernate();
+		
+		System.out.println("idgenero: " + idgenero);
+		
+		jDAO.InsertarJuego(nuevoJuego);
+		
+		response.sendRedirect("jsp/principalAdmin.jsp");
 
 	}
 

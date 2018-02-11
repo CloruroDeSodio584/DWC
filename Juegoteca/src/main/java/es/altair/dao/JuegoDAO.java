@@ -9,4 +9,5 @@ public interface JuegoDAO {
 
 	List<Juego> listar(Usuario u);
 	List<Juego> listarTodos();
+	void InsertarJuego(Juego nuevoJuego);
 }

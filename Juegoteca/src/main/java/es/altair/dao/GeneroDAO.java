@@ -7,4 +7,6 @@ import es.altair.bean.Genero;
 public interface GeneroDAO {
 	
 	public List<Genero>listarGeneros();
+
+	public Genero ObtenerGeneroPorId(int idgenero);
 }

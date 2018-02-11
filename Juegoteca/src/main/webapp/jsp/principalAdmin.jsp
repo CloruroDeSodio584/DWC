@@ -230,7 +230,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="text" required="required" class="form-control"
+										type="number" required="required" class="form-control"
 										name="pegi" id="pegi" placeholder="Escribe el PEGI" />
 								</div>
 							</div>
