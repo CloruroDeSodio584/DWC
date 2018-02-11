@@ -1,5 +1,10 @@
 package es.altair.dao;
 
-public interface JuegotecaDAO {
+import java.util.List;
 
+import es.altair.bean.Juegoteca;
+import es.altair.bean.Usuario;
+
+public interface JuegotecaDAO {
+	
 }

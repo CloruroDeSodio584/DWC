@@ -6,4 +6,8 @@ public interface UsuarioDAO {
 
 	Usuario comprobarUsuario(String correo, String password);
 
+	int insertar(Usuario usu);
+
+	boolean validarEmail(Usuario usu);
+
 }

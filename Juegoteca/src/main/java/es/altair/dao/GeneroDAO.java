@@ -1,5 +1,10 @@
 package es.altair.dao;
 
-public interface GeneroDAO {
+import java.util.List;
 
+import es.altair.bean.Genero;
+
+public interface GeneroDAO {
+	
+	public List<Genero>listarGeneros();
 }

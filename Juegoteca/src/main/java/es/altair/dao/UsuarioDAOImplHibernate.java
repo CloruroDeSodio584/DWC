@@ -35,5 +35,61 @@ public class UsuarioDAOImplHibernate implements UsuarioDAO {
 		
 		return usu;
 	}
+	public int insertar(Usuario usu) {
+		Session sesion = SessionProvider.getSession();
+		
+		int filas=0;
+		try {
+			sesion.beginTransaction();
+						
+	
+			filas = sesion.createSQLQuery("INSERT INTO usuarios (nombre, apellidos, edad, correo, password, tipo) values (:n, :a, :e, :c, AES_ENCRYPT(:p, :passphrase), :t)")
+			.setParameter("n", usu.getNombre())
+			.setParameter("a", usu.getApellidos())
+			.setParameter("e", usu.getEdad())
+			.setParameter("c", usu.getCorreo())
+			.setParameter("p", usu.getPassword())
+			.setParameter("passphrase", pass)
+			.setParameter("t", usu.getTipo())
+			.executeUpdate();
+				
+			
+			
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			
+		} finally {
+			sesion.close();
+		}
+		
+		return filas;
+		
+	}
+	public boolean validarEmail(Usuario usu) {
+		Session sesion = SessionProvider.getSession();
+		boolean correcto = true;
+		
+		
+		try {
+			sesion.beginTransaction();
+						
+			if( (Usuario) sesion.createQuery("FROM Usuario WHERE correo=:c")
+			.setParameter("c", usu.getCorreo())
+			.uniqueResult() !=null)
+				correcto = false;
+			
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			
+		} finally {
+			sesion.close();
+		}
+		
+		return correcto;
+
+		
+		
+		
+	}
 
 }

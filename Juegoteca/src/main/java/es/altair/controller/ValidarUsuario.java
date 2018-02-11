@@ -59,7 +59,7 @@ public class ValidarUsuario extends HttpServlet {
 				
 				response.sendRedirect("jsp/principalAdmin.jsp");
 				break;
-			case 2:
+			case 0:
 				// Usuario Normal
 				System.out.println("USUARIO NORMAL");
 
