@@ -9,4 +9,8 @@ public interface GeneroDAO {
 	public List<Genero>listarGeneros();
 
 	public Genero ObtenerGeneroPorId(int idgenero);
+
+	public boolean validarGenero(Genero nuevoGenero);
+
+	public int insertar(Genero nuevoGenero);
 }

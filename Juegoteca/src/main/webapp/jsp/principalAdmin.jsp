@@ -24,8 +24,8 @@
 <link rel="stylesheet" type="text/css"
 	href="../fonts/OLD/font-awesome.min.css">
 </head>
-<body>
-	<div class="container">
+<body background="">
+	<div class="">
 
 		<%
 			if (session.getAttribute("usuLogeado") == null || session.isNew()) {
@@ -37,16 +37,14 @@
 				boolean esNulo = true;
 				if (juegos == null)
 					esNulo = false;
-				
-				
+
 				//Listar Generos
 				GeneroDAO gDAO = new GeneroDAOImplHibernate();
 				List<Genero> generos = gDAO.listarGeneros();
-				
+
 				boolean esNulo2 = true;
 				if (juegos == null)
 					esNulo2 = false;
-				
 		%>
 		<!-- Inicio -->
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -66,28 +64,55 @@
 			class="btn btn-outline-success btn-sm">Cerrar Sesión</a> </nav>
 
 		<!-- Fin Inicio -->
+		<div>
+
+			<%
+							String error = request.getParameter("mensaje");
+							if (error != null) {
+						%>
+
+			<div class="alert alert-warning alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-hidden="true">x</button>
+				<strong>Info!</strong>
+				<%=error%>
+			</div>
+			<%
+							}
+						%>
+		</div>
 
 		<!-- inicio carousel -->
-		<div class="container mt-5" data-toggle="collapse">
+
+
+		<div class="mt-5" data-toggle="collapse">
 
 			<div id="carouselExampleIndicators" class="carousel slide"
 				data-ride="carousel">
+
 				<ol class="carousel-indicators">
 					<li data-target="#carouselExampleIndicators" data-slide-to="0"
 						class="active"></li>
 					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 					<!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
 				</ol>
-				<div class="carousel-inner">
+				<div class="carousel-inner classBack">
 					<div class="carousel-item active">
 						<img class="d-block w-100" src="../images/zelda.jpg"
-							alt="First slide" style="border-radius: 10px;" height="250">
+							alt="First slide">
+						<div class="carousel-caption d-none d-md-block">
+							<h5>The Legend Of Zelda:Breath of the Wild</h5>
+							<p>Nintendo Switch/Wii U</p>
+						</div>
 					</div>
 
 					<div class="carousel-item">
-						<img class="d-block w-100"
-							src="../images/mario-rabbids-kingdom-battle-feed1.jpg"
-							alt="Second slide" style="border-radius: 10px;" height="250">
+						<img class="d-block w-100" src="../images/mario.jpg"
+							alt="Second slide">
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Super Mario Maker</h5>
+							<p>Wii U</p>
+						</div>
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators"
@@ -104,180 +129,235 @@
 		</div>
 
 		<!-- fin carousel -->
-
+		<br>
 		<!-- Tabla De Juegos -->
+		<div class="container">
+			<table class="table table-md-6 table-striped table-inverse">
+				<thead>
+					<tr>
+						<th>Titulo Juego</th>
+						<th>Num Jugadores</th>
+						<th>Descripcion</th>
+						<th>Pegi</th>
 
-		<table class="table table-md-6 table-striped table-inverse">
-			<thead>
-				<tr>
-					<th>Titulo Juego</th>
-					<th>Num Jugadores</th>
-					<th>Descripcion</th>
-					<th>Pegi</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
 
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
+					<%
+						if (esNulo) {
+								for (Juego j : juegos) {
+					%>
 
-				<%
-					if (esNulo) {
-							for (Juego j : juegos) {
-				%>
+					<tr>
 
-				<tr>
+						<td><%=j.getTitulo()%></td>
+						<td><%=j.getNumJugadores()%></td>
+						<td><%=j.getDescripcion()%></td>
+						<td><%=j.getPegi()%></td>
 
-					<td><%=j.getTitulo()%></td>
-					<td><%=j.getNumJugadores()%></td>
-					<td><%=j.getDescripcion()%></td>
-					<td><%=j.getPegi()%></td>
-
-					<td>
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Modal
-											title</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">...</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+						<td>
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Modal
+												title</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">...</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save
+												changes</button>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div> <!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#exampleModal">Launch demo modal</button>
-					</td>
+							</div> <!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#exampleModal">Launch demo modal</button>
+						</td>
 
-				</tr>
-				<%
-					}
+					</tr>
+					<%
 						}
-				%>
-
-			</tbody>
-		</table>
-
-		<!-- BOTON MODAL -->
-		<button class="btn btn-primary" data-toggle="modal"
-			data-target=".bd-example-modal-lg">Añadir Juego</button>
-
-		<div class="modal fade bd-example-modal-lg" tabindex="-1"
-			role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-
-				<!-- INICIO CONTENIDO MODAL -->
-
-				<div class="modal-content">
-
-					<form class="form-horizontal" method="post" action="../AnadirJuego">
-
-						<div class="form-group">
-							<label for="titulo" class="cols-sm-2 control-label">Titulo
-								Juego </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa"
-										aria-hidden="true"></i></span> <input type="text"
-										class="form-control" name="titulo" id="titulo"
-										required="required" placeholder="Escribe el Titulo del Juego" />
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="numJugadores" class="cols-sm-2 control-label">Numero
-								de Jugadores </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-										type="text" required="required" class="form-control"
-										name="numJugadores" id="numJugadores"
-										placeholder="Escribe el numero de Jugadores" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="descripcion" class="cols-sm-2 control-label">Una
-								pequeña descripción</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-users fa" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="descripcion"
-										id="descripcion" required="required"
-										placeholder="Escribe una pequeña descripcion" />
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Pegi
-								(Edad Orientada) </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="number" required="required" class="form-control"
-										name="pegi" id="pegi" placeholder="Escribe el PEGI" />
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label class="col-xs-3 control-label">Genero</label>
-							<div class="col-xs-5 selectContainer">
-								<select class="form-control" name="genero">
-
-									<%
-					if (esNulo2) {
-							for (Genero g : generos) {
-				%>
-
-									<option value="<%=g.getIdGenero() %>"><%=g.getNombreGenero()%></option>
-
-
-									<%
 							}
-					}
-								%>
+					%>
 
-								</select>
+				</tbody>
+			</table>
+
+
+			<!-- BOTON MODAL -->
+			<button class="btn btn-primary" data-toggle="modal"
+				data-target=".bd-example-modal-lg">Añadir Juego</button>
+
+			<!-- INICIO CONTENIDO MODAL -->
+
+			<div class="modal fade bd-example-modal-lg" tabindex="-1"
+				role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+
+
+
+					<div class="modal-content">
+
+						<form class="form-horizontal" method="post"
+							action="../AnadirJuego">
+
+							<div class="form-group">
+								<label for="titulo" class="cols-sm-2 control-label">Titulo
+									Juego </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-user fa" aria-hidden="true"></i></span> <input
+											type="text" class="form-control" name="titulo" id="titulo"
+											required="required" placeholder="Escribe el Titulo del Juego" />
+									</div>
+								</div>
 							</div>
-						</div>
+
+							<div class="form-group">
+								<label for="numJugadores" class="cols-sm-2 control-label">Numero
+									de Jugadores </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+											type="text" required="required" class="form-control"
+											name="numJugadores" id="numJugadores"
+											placeholder="Escribe el numero de Jugadores" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="descripcion" class="cols-sm-2 control-label">Una
+									pequeña descripción</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-users fa" aria-hidden="true"></i></span> <input
+											type="text" class="form-control" name="descripcion"
+											id="descripcion" required="required"
+											placeholder="Escribe una pequeña descripcion" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Pegi
+									(Edad Orientada) </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+											type="number" required="required" class="form-control"
+											name="pegi" min="3" max="19" id="pegi"
+											placeholder="Escribe el PEGI" />
+									</div>
+								</div>
+							</div>
 
 
-						<div class="form-group ">
-							<button type="submit"
-								class="btn btn-primary btn-lg btn-block login-button">Registrar
-							</button>
+							<div class="form-group">
+								<label class="col-xs-3 control-label">Genero</label>
+								<div class="col-xs-5 selectContainer">
+									<select class="form-control" name="genero">
 
-						</div>
+										<%
+											if (esNulo2) {
+													for (Genero g : generos) {
+										%>
 
-					</form>
+										<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+
+
+										<%
+											}
+												}
+										%>
+
+									</select>
+								</div>
+							</div>
+
+
+							<div class="form-group ">
+								<button type="submit"
+									class="btn btn-primary btn-lg btn-block login-button">Registrar
+								</button>
+							</div>
+
+						</form>
 
 
 
 
+					</div>
+					<!-- FIN CONTENIDO MODAL -->
 				</div>
-				<!-- FIN CONTENIDO MODAL -->
 			</div>
+
+
+			<!-- Añadir Genero -->
+
+			<button class="btn btn-warning" data-toggle="modal"
+				data-target=".ejemplo">Añadir Género</button>
+
+			<div class="modal fade ejemplo" tabindex="-1" role="dialog"
+				aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+
+
+
+					<div class="modal-content">
+
+						<br />
+						<form class="form-horizontal" method="post"
+							action="../NuevoGenero">
+
+
+							<div class="form-group">
+								<label for="genero" class="cols-sm-2 control-label">Nombre
+									del Nuevo Genero </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-user fa" aria-hidden="true"></i></span> <input
+											type="text" class="form-control" name="genero" id="genero"
+											required="required" placeholder="Escribe el nuevo Genero" />
+									</div>
+								</div>
+							</div>
+							<br /> <br />
+							<div class="form-group ">
+								<button type="submit"
+									class="btn btn-primary btn-lg btn-block login-button">
+									Añadir Género</button>
+							</div>
+
+						</form>
+
+
+
+
+					</div>
+					<!-- FIN CONTENIDO MODAL -->
+				</div>
+			</div>
+
+
+
+
 		</div>
-
-
 
 		<!-- FIN Tabla De Juegos -->
 

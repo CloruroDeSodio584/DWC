@@ -28,6 +28,12 @@
   	<description></description>
   	<servlet-class>es.altair.controller.AnadirJuego</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>NuevoGenero</servlet-name>
+  	<display-name>NuevoGenero</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.NuevoGenero</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ValidarUsuario</servlet-name>
   	<url-pattern>/ValidarUsuario</url-pattern>
@@ -43,5 +49,9 @@
   <servlet-mapping>
   	<servlet-name>AnadirJuego</servlet-name>
   	<url-pattern>/AnadirJuego</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NuevoGenero</servlet-name>
+  	<url-pattern>/NuevoGenero</url-pattern>
   </servlet-mapping>
 </web-app>

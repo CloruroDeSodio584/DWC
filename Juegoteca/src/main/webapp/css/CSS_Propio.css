@@ -21,3 +21,8 @@
 	.carousel-inner .next        { left:  25%; }
 	.carousel-inner .prev		 { left: -25%; }	
 }
+
+.classBlack {
+	color : red;
+	font-size:50px;
+}
