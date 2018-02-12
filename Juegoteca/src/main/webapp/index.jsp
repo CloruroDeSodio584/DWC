@@ -24,7 +24,7 @@ h5{ color: black; }
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- BOOTSTRAP CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link href="/css/CSS_Propio.css" rel="stylesheet" />
+<link href="css/CSS_Propio.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="fonts/OLD/font-awesome.css">
 <link rel="stylesheet" type="text/css"
 	href="fonts/OLD/font-awesome.min.css">
