@@ -12,12 +12,6 @@
 <html>
 <head>
 
-<style >
-
-h5{ color: black; }
-
-</style>
-
 <title>La Juegoteca</title>
 <meta charset="utf-8">
 <meta name="viewport"
