@@ -22,7 +22,15 @@
 	.carousel-inner .prev		 { left: -25%; }	
 }
 
-.classBlack {
-	color : red;
-	font-size:50px;
+.classBack {
+background-color: #0069d9;
+ 
+font-size:50px;
+
+}
+h5,p {
+	color: red;
+}
+body{
+	background-color: #7e9980;
 }
