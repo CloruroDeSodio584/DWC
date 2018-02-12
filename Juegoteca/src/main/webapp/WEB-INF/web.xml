@@ -34,6 +34,18 @@
   	<description></description>
   	<servlet-class>es.altair.controller.NuevoGenero</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BorrarJuego</servlet-name>
+  	<display-name>BorrarJuego</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.BorrarJuego</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditarJuego</servlet-name>
+  	<display-name>EditarJuego</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.EditarJuego</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ValidarUsuario</servlet-name>
   	<url-pattern>/ValidarUsuario</url-pattern>
@@ -53,5 +65,13 @@
   <servlet-mapping>
   	<servlet-name>NuevoGenero</servlet-name>
   	<url-pattern>/NuevoGenero</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BorrarJuego</servlet-name>
+  	<url-pattern>/BorrarJuego</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarJuego</servlet-name>
+  	<url-pattern>/EditarJuego</url-pattern>
   </servlet-mapping>
 </web-app>
