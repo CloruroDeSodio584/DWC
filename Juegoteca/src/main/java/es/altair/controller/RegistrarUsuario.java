@@ -43,7 +43,7 @@ public class RegistrarUsuario extends HttpServlet {
 	
 		System.out.println(nombre +" - " + apellidos + " - " + edad + " - " + correo + " - " + contraseña);
 		
-		Usuario usu = new Usuario(nombre, apellidos, edad, correo, contraseña, 0);
+		Usuario usu = new Usuario(nombre, apellidos, edad, correo, contraseña, 1);
 		UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
 		
 		int filas;

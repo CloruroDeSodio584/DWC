@@ -162,10 +162,10 @@ h5{ color: black; }
 		<table class="table table-md-6 table-striped table-inverse">
 			<thead>
 				<tr>
-					<th class="text-center">Titulo Juego</th>
-					<th class="text-center">Num Jugadores</th>
-					<th class="text-center">Descripcion</th>
-					<th class="text-center">Pegi</th>
+					<th class="">Titulo Juego</th>
+					<th class="">Num Jugadores</th>
+					<th class="">Descripcion</th>
+					<th class="">Pegi</th>
 
 				</tr>
 			</thead>

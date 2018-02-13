@@ -46,6 +46,18 @@
   	<description></description>
   	<servlet-class>es.altair.controller.EditarJuego</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BorrarUsuario</servlet-name>
+  	<display-name>BorrarUsuario</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.BorrarUsuario</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditarUsuario</servlet-name>
+  	<display-name>EditarUsuario</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.EditarUsuario</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ValidarUsuario</servlet-name>
   	<url-pattern>/ValidarUsuario</url-pattern>
@@ -73,5 +85,13 @@
   <servlet-mapping>
   	<servlet-name>EditarJuego</servlet-name>
   	<url-pattern>/EditarJuego</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BorrarUsuario</servlet-name>
+  	<url-pattern>/BorrarUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarUsuario</servlet-name>
+  	<url-pattern>/EditarUsuario</url-pattern>
   </servlet-mapping>
 </web-app>

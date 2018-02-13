@@ -57,7 +57,7 @@
 		<div class="input-group input-group-sm mb-2 mr-sm-2 mb-sm-0">
 		
 			<a href="juegotecaAdmin.jsp" role="button"
-				class="btn btn-outline-success btn-sm derecha">Juegoteca</a>	
+				class="btn btn-outline-success btn-sm derecha">Usuarios</a>	
 			</div>	
 			
 				<a href="../CerrarSesion" role="button"
@@ -68,7 +68,7 @@
 	
 	<!-- Fin Inicio -->
 	<div>
-		<br />
+		<br /><br /><br />
 		<%
 							String error = request.getParameter("mensaje");
 							if (error != null) {
@@ -101,20 +101,20 @@
 			</ol>
 			<div class="carousel-inner classBack">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="../images/zelda.jpg"
+					<img class="d-block w-100" src="../images/batman.jpg"
 						alt="First slide">
 					<div class="carousel-caption d-none d-md-block">
-<!-- CAMBIAR COLOR LETRA --><h5 style=" font-style = 'bold' ">The Legend Of Zelda:Breath of the Wild</h5>
-						<p>Nintendo Switch/Wii U</p>
+<!-- CAMBIAR COLOR LETRA --><h5 style=" font-style = 'bold' ">Batman Arkham Knight</h5>
+						<p>Ps4/Pc</p>
 					</div>
 				</div>
 
 				<div class="carousel-item">
-					<img class="d-block w-100" src="../images/mario.jpg"
+					<img class="d-block w-100" src="../images/call.jpg"
 						alt="Second slide">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Super Mario Maker</h5>
-						<p>Wii U</p>
+						<h5>Call of duty: Ghost</h5>
+						<p>Ps4/Xbox One</p>
 					</div>
 				</div>
 			</div>

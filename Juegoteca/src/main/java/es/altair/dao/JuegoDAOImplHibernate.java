@@ -119,14 +119,7 @@ public class JuegoDAOImplHibernate implements JuegoDAO {
 		
 		try {
 			sesion.beginTransaction();		
-		/*	 sesion.createSQLQuery("UPDATE juegos SET titulo = ':t', numJugadores = ':n', descripcion = ':d', pegi = ':p', idGenero = ':g' WHERE idJuego=:i ")
-			 .setParameter("t", titulo)
-			 .setParameter("n", numJugadores)
-			 .setParameter("d", descripcion)
-			 .setParameter("p", pegi)
-			 .setParameter("g", idgenero)
-			 .setParameter("i", idJuego)
-			 .executeUpdate(); */
+		
 			sesion.update(juegoActualizar);
 
 			sesion.getTransaction().commit();

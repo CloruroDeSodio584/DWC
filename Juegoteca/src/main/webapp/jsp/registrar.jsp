@@ -13,8 +13,10 @@
 	href="../fonts/OLD/font-awesome.min.css">
 
 </head>
-<body>
+<body background="../images/top.jpg">
 	<div class="container">
+	
+	
 		<div class="row main">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
@@ -94,6 +96,8 @@
 				</form>
 			</div>
 		</div>
+	
+		
 	</div>
 
 	<script type="text/javascript" src="assets/js/bootstrap.js"></script>

@@ -1,3 +1,5 @@
+<%@page import="es.altair.dao.UsuarioDAO"%>
+<%@page import="es.altair.dao.UsuarioDAOImplHibernate"%>
 <%@page import="es.altair.dao.GeneroDAOImplHibernate"%>
 <%@page import="es.altair.dao.GeneroDAO"%>
 <%@page import="es.altair.bean.Usuario"%>
@@ -31,22 +33,12 @@
 			if (session.getAttribute("usuLogeado") == null || session.isNew()) {
 				response.sendRedirect("../index.jsp?mensaje=Inicie sesión");
 			} else {
-				//Obtiene el juego por el ID
-				JuegoDAO jDAO = new JuegoDAOImplHibernate();
-				int m = (Integer.parseInt(request.getParameter("idJuego")));
-				Juego juegoActualizar = jDAO.obtenerJuegoPorId(m);
-
-				//Listar Generos
-				GeneroDAO gDAO = new GeneroDAOImplHibernate();
-				List<Genero> generos = gDAO.listarGeneros();
-
-				boolean esNulo2 = true;
-				if (generos == null)
-					esNulo2 = false;
-
-				//Obtengo el genero por el ID
-				GeneroDAO gDAO2 = new GeneroDAOImplHibernate();
-				int idGeneroObtenido = gDAO2.ObtenerIdGeneroPorIdJuego(m);
+				
+				//Obtengo el usuario por el ID
+				UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
+				int idUsuarioCambiar = (Integer.parseInt(request.getParameter("idUsuario")));
+				Usuario UsuarioActualizar = uDAO.obtenerUsuarioPorId(idUsuarioCambiar);
+				
 		%>
 		<!-- Inicio -->
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -70,96 +62,68 @@
 			class="btn btn-link btn-sm derecha">Cerrar Sesión</a> </nav>
 		<br /> <br /> <br /> <br />
 
-		<!-- Editar Juego FORM -->
+		<!-- Editar Usuario FORM -->
 		<div class="main-login main-center">
-			<form class="form-horizontal" method="post" action="../EditarJuego">
+			<form class="form-horizontal" method="get" action="../EditarUsuario">
 
 				<div class="form-group">
-					<label for="titulo" class="cols-sm-2 control-label"> Titulo
-						Juego </label>
+					<label for="nombre" class="cols-sm-2 control-label"> Nuevo
+						Nombre </label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa"
 								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="titulo" id="titulo" required="required"
-								value="<%=juegoActualizar.getTitulo()%>" />
+								name="nombre" id="nombre" required="required"
+								value="<%=UsuarioActualizar.getNombre()%>" />
 						</div>
 					</div>
 				</div>
 
-				<input type="hidden" class="form-control" name="idJuego"
-					id="idJuego" required="required" value="<%=m%>" />
+				<input type="hidden" class="form-control" name="idUsuario"
+					id="idUsuario" required="required" value="<%=idUsuarioCambiar%>" />
 
 				<div class="form-group">
-					<label for="numJugadores" class="cols-sm-2 control-label">Numero
-						de Jugadores </label>
+					<label for="numJugadores" class="cols-sm-2 control-label">Apellidos
+						 </label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
 								type="text" required="required" class="form-control"
-								name="numJugadores" id="numJugadores"
-								value="<%=juegoActualizar.getNumJugadores()%>" />
+								name="apellidos" id="apellidos"
+								value="<%=UsuarioActualizar.getApellidos()%>" />
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="descripcion" class="cols-sm-2 control-label">Una
-						pequeña descripción</label>
+					<label for="descripcion" class="cols-sm-2 control-label">
+						Edad</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="descripcion" id="descripcion" required="required"
-								value="<%=juegoActualizar.getDescripcion()%>" />
+								aria-hidden="true"></i></span> <input type="number"  class="form-control"
+								name="edad" min="1" max="99" id="edad" required="required"
+								value="<%=UsuarioActualizar.getEdad()%>" />
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Pegi
-						(Edad Orientada) </label>
+					<label for="confirm" class="cols-sm-2 control-label">Correo
+						 </label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="number" required="required" class="form-control"
-								name="pegi" min="3" max="19" id="pegi"
-								value="<%=juegoActualizar.getPegi()%>" />
+								type="email" required="required" class="form-control"
+								name="correo" min="3" max="19" id="correo"
+								value="<%=UsuarioActualizar.getCorreo()%>" />
 						</div>
 					</div>
 				</div>
 
 				<!-- Simepre esta seleccionado por defecto Terror -->
-				<div class="form-group">
-					<label class="col-xs-3 control-label">Genero</label>
-					<div class="col-xs-5 selectContainer">
-						<select class="form-control" name="genero">
-
-							<%
-								if (esNulo2) {
-										for (Genero g : generos) {
-							%>
-							<%
-								if (g.getIdGenero() == idGeneroObtenido) {
-							%>
-							<option selected value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
-							<%
-								} else
-							%>
-
-							<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
-
-
-
-							<%
-								}
-									}
-							%>
-
-						</select>
-					</div>
-				</div>
+			
 
 
 				<div class="form-group ">
