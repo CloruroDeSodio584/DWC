@@ -56,8 +56,8 @@
 	
 		<div class="input-group input-group-sm mb-2 mr-sm-2 mb-sm-0">
 		
-			<a href="juegotecaAdmin.jsp" role="button"
-				class="btn btn-outline-success btn-sm derecha">Juegoteca</a>	
+			<a href="principalAdmin.jsp" role="button"
+				class="btn btn-outline-success btn-sm derecha">Principal</a>	
 			</div>	
 			
 				<a href="../CerrarSesion" role="button"
@@ -101,20 +101,20 @@
 			</ol>
 			<div class="carousel-inner classBack">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="../images/zelda.jpg"
+					<img class="d-block w-100" src="../images/The.jpg"
 						alt="First slide">
 					<div class="carousel-caption d-none d-md-block">
-<!-- CAMBIAR COLOR LETRA --><h5 style=" font-style = 'bold' ">The Legend Of Zelda:Breath of the Wild</h5>
-						<p>Nintendo Switch/Wii U</p>
+<!-- CAMBIAR COLOR LETRA --><h5 style=" font-style = 'bold' ">The Evil Within</h5>
+						<p>PS4/XBOX ONE</p>
 					</div>
 				</div>
 
 				<div class="carousel-item">
-					<img class="d-block w-100" src="../images/mario.jpg"
+					<img class="d-block w-100" src="../images/Sonic.jpg"
 						alt="Second slide">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Super Mario Maker</h5>
-						<p>Wii U</p>
+						<h5>Sonic Mania</h5>
+						<p>Nintendo Switch/Ps4</p>
 					</div>
 				</div>
 			</div>
@@ -142,7 +142,6 @@
 					<th>Num Jugadores</th>
 					<th>Descripcion</th>
 					<th>Pegi</th>
-					<th>Genero</th>
 
 					<th></th>
 				</tr>
@@ -160,8 +159,6 @@
 					<td><%=j.getNumJugadores()%></td>
 					<td><%=j.getDescripcion()%></td>
 					<td><%=j.getPegi()%></td>
-					<td><%=j.getGeneros().getNombreGenero()%></td>
-					
 
 					<td>
 						<!-- Modal --> <!-- Button trigger modal -->
@@ -209,166 +206,6 @@
 
 			</tbody>
 		</table>
-
-
-		<!-- BOTON MODAL -->
-		<button class="btn btn-primary" data-toggle="modal"
-			data-target=".bd-example-modal-lg">Añadir Juego</button>
-
-		<!-- INICIO CONTENIDO MODAL -->
-
-		<div class="modal fade bd-example-modal-lg" tabindex="-1"
-			role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-
-
-
-				<div class="modal-content">
-
-					<form class="form-horizontal" method="post" action="../AnadirJuego">
-
-						<div class="form-group">
-							<label for="titulo" class="cols-sm-2 control-label">Titulo
-								Juego </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa"
-										aria-hidden="true"></i></span> <input type="text"
-										class="form-control" name="titulo" id="titulo"
-										required="required" placeholder="Escribe el Titulo del Juego" />
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="numJugadores" class="cols-sm-2 control-label">Numero
-								de Jugadores </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-										type="text" required="required" class="form-control"
-										name="numJugadores" id="numJugadores"
-										placeholder="Escribe el numero de Jugadores" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="descripcion" class="cols-sm-2 control-label">Una
-								pequeña descripción</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-users fa" aria-hidden="true"></i></span> <input
-										type="text" class="form-control" name="descripcion"
-										id="descripcion" required="required"
-										placeholder="Escribe una pequeña descripcion" />
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Pegi
-								(Edad Orientada) </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-										type="number" required="required" class="form-control"
-										name="pegi" min="3" max="19" id="pegi"
-										placeholder="Escribe el PEGI" />
-								</div>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label class="col-xs-3 control-label">Genero</label>
-							<div class="col-xs-5 selectContainer">
-								<select class="form-control" name="genero">
-
-									<%
-											if (esNulo2) {
-													for (Genero g : generos) {
-										%>
-
-									<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
-
-
-									<%
-											}
-												}
-										%>
-
-								</select>
-							</div>
-						</div>
-
-
-						<div class="form-group ">
-							<button type="submit"
-								class="btn btn-primary btn-lg btn-block login-button">Registrar
-							</button>
-						</div>
-
-					</form>
-
-
-
-
-				</div>
-				<!-- FIN CONTENIDO MODAL -->
-			</div>
-		</div>
-
-
-		<!-- Añadir Genero -->
-
-		<button class="btn btn-warning" data-toggle="modal"
-			data-target=".ejemplo">Añadir Género</button>
-
-		<div class="modal fade ejemplo" tabindex="-1" role="dialog"
-			aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-
-
-
-				<div class="modal-content">
-
-					<br />
-					<form class="form-horizontal" method="post" action="../NuevoGenero">
-
-
-						<div class="form-group">
-							<label for="genero" class="cols-sm-2 control-label">Nombre
-								del Nuevo Genero </label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa"
-										aria-hidden="true"></i></span> <input type="text"
-										class="form-control" name="genero" id="genero"
-										required="required" placeholder="Escribe el nuevo Genero" />
-								</div>
-							</div>
-						</div>
-						<br /> <br />
-						<div class="form-group ">
-							<button type="submit"
-								class="btn btn-primary btn-lg btn-block login-button">
-								Añadir Género</button>
-						</div>
-
-					</form>
-
-
-
-
-				</div>
-				<!-- FIN CONTENIDO MODAL -->
-			</div>
-		</div>
-
-
 
 
 	</div>

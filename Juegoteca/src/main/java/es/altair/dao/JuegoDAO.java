@@ -12,5 +12,5 @@ public interface JuegoDAO {
 	void InsertarJuego(Juego nuevoJuego);
 	void borrarJuego(int idJuego);
 	Juego obtenerJuegoPorId(int idJuego);
-	void actualizarJuego(int idJuego, String titulo, String numJugadores, String descripcion, int pegi, int idgenero);
+	void actualizarJuego(Juego juegoActualizar);
 }

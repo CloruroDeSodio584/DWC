@@ -44,6 +44,10 @@
 				if (generos == null)
 					esNulo2 = false;
 				
+				//Obtengo el genero por el ID
+				GeneroDAO gDAO2 = new GeneroDAOImplHibernate();
+				int idGeneroObtenido = gDAO2.ObtenerIdGeneroPorIdJuego(m);
+				
 		%>
 		<!-- Inicio -->
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -80,6 +84,10 @@
 									</div>
 								</div>
 							</div>
+							
+							<input
+											type="hidden" class="form-control" name="idJuego" id="idJuego" 
+											required="required" value="<%= m %>" />
 
 							<div class="form-group">
 								<label for="numJugadores" class="cols-sm-2 control-label">Numero
@@ -132,8 +140,17 @@
 											if (esNulo2) {
 													for (Genero g : generos) {
 										%>
-
-										<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+											<% 
+											if(g.getIdGenero() == idGeneroObtenido){  
+											%>
+												<option selected value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+												<% 
+											}
+											else
+												%>
+											
+											<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+											
 
 
 										<%

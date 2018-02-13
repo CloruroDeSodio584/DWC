@@ -13,4 +13,6 @@ public interface GeneroDAO {
 	public boolean validarGenero(Genero nuevoGenero);
 
 	public int insertar(Genero nuevoGenero);
+	
+	public int ObtenerIdGeneroPorIdJuego(int idJuego);
 }

@@ -48,14 +48,23 @@ public class EditarJuego extends HttpServlet {
 		 int pegi =  Integer.parseInt(request.getParameter("pegi"));
 		 
 		 int idgenero = Integer.parseInt(request.getParameter("genero"));
-			
+		 
 			GeneroDAO gDAO = new GeneroDAOImplHibernate();	
 			Genero nuevoGenero = gDAO.ObtenerGeneroPorId(idgenero);
 			
 			JuegoDAO jDAO = new JuegoDAOImplHibernate();
-			jDAO.actualizarJuego(idJuego, titulo, numJugadores, descripcion, pegi, idgenero);
 			
-			response.sendRedirect("../principalAdmin.jsp");
+			Juego j =jDAO.obtenerJuegoPorId(idJuego);
+			
+			j.setTitulo(titulo);
+			j.setNumJugadores(numJugadores);
+			j.setDescripcion(descripcion);
+			j.setPegi(pegi);
+			j.setGeneros(nuevoGenero);
+			
+			jDAO.actualizarJuego(j);
+			
+			response.sendRedirect("jsp/principalAdmin.jsp");
 	}
 
 }

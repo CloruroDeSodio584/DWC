@@ -36,13 +36,13 @@ public class ValidarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String correo = request.getParameter("correo");
+		String correo = request.getParameter("correo").trim();
 		String password = request.getParameter("password");
 		System.out.println(correo + " - " + password);
 		
 		UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
 		
-		Usuario usu = uDAO.comprobarUsuario(correo, password);
+		Usuario usu = uDAO.comprobarUsuario(correo.trim(), password);
 		
 		if (usu!=null) {
 			// Usuario correcto

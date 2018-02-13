@@ -98,4 +98,25 @@ public class GeneroDAOImplHibernate implements GeneroDAO {
 		return filas;
 	}
 
+	public int ObtenerIdGeneroPorIdJuego(int idJuego) {
+		Session sesion = SessionProvider.getSession();
+		
+		int idGenero = 0;
+		try {
+			sesion.beginTransaction();
+
+			idGenero = (Integer) sesion.createSQLQuery("SELECT idGenero FROM juegos WHERE idJuego=:l")
+					.setParameter("l", idJuego)
+					.uniqueResult();
+
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+		}
+		
+		return idGenero;
+	}
+
 }
