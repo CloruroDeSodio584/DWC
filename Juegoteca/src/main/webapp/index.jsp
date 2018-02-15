@@ -26,8 +26,9 @@ h5{ color: black; }
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="/css/CSS_Propio.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="fonts/OLD/font-awesome.css">
-<link rel="stylesheet" type="text/css"
-	href="fonts/OLD/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
 </head>
 <body>
 
@@ -65,7 +66,7 @@ h5{ color: black; }
 					<div class="input-group input-group-sm mb-2 mr-sm-2 mb-sm-0">
 						<div class="input-group-addon">
 
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="far fa-envelope" aria-hidden="true"></i>
 						</div>
 						<input type="email" id="correo" name="correo" required="required"
 							class="form-control" placeholder="Correo">

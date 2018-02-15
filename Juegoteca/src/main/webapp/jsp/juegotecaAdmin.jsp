@@ -1,4 +1,4 @@
-<%@page import="es.altair.dao.UsuarioDAO"%>
++<%@page import="es.altair.dao.UsuarioDAO"%>
 <%@page import="es.altair.dao.UsuarioDAOImplHibernate"%>
 <%@page import="es.altair.dao.GeneroDAOImplHibernate"%>
 <%@page import="es.altair.dao.GeneroDAO"%>
@@ -20,13 +20,11 @@
 <title>Juegoteca Coleccion</title>
 <!-- BOOTSTRAP CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link href="css/CSS_Propio.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css"
-	href="../fonts/OLD/font-awesome.css">
-<link rel="stylesheet" type="text/css"
-	href="../fonts/OLD/font-awesome.min.css">
+<link href="../css/CSS_Propio.css" rel="stylesheet" type="text/css" />
+
+
 </head>
-<body background="">
+<body>
 	<div class="">
 		<!-- el Actualizar usu no actualiza y quitar el borrar de la sesión iniciada -->
 		<%
@@ -34,6 +32,8 @@
 				response.sendRedirect("../index.jsp?mensaje=Inicie sesión");
 			} else {
 
+				Usuario ulog = (Usuario)session.getAttribute("usuLogeado");
+				
 				UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
 				List<Usuario> usuarios = uDAO.listarUsuarios();
 
@@ -60,7 +60,7 @@
 
 		<!-- Fin Inicio -->
 		<div>
-			<br />
+			<br /><br /><br />
 			<%
 				String error = request.getParameter("mensaje");
 					if (error != null) {
@@ -154,12 +154,11 @@
 						<td><%=u.getEdad()%></td>
 
 						<td>
-							<!-- Modal --> <!-- Button trigger modal -->
-							<button type="button" class="btn btn-success"
-								onclick="location.href='editarUsuario.jsp?idUsuario=<%=u.getIdUsuario()%>'">Editar</button>
-
-
 						
+
+
+						<% if(u.getIdUsuario() != ulog.getIdUsuario())
+						{	 %>
 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								data-target="#borrarUsuario<%=u.getIdUsuario()%>">Borrar</button>
 							<div class="modal fade" id="borrarUsuario<%=u.getIdUsuario()%>"
@@ -176,7 +175,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-											¿Desea borrar el usuario con el correo <%= u.getCorreo() %> ?
+											<p>¿Desea borrar el usuario con el correo <%= u.getCorreo() %> ?</p>
 											
 										</div>
 										<div class="modal-footer">
@@ -185,6 +184,7 @@
 											<button type="button" class="btn btn-primary"
 												onclick="location.href='../BorrarUsuario?idUsuario=<%=u.getIdUsuario()%>'">Si
 											</button>
+											<% } %>
 										</div>
 									</div>
 								</div>

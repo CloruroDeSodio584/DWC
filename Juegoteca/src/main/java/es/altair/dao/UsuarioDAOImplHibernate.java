@@ -143,13 +143,13 @@ public class UsuarioDAOImplHibernate implements UsuarioDAO {
 
 		Session sesion = SessionProvider.getSession();
 		
-		
 		try {
 			sesion.beginTransaction();		
 		
 			sesion.update(u);
-
+			sesion.flush();
 			sesion.getTransaction().commit();
+			
 		} catch (Exception e) {
 
 		} finally {

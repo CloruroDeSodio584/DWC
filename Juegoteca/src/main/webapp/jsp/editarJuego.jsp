@@ -23,6 +23,7 @@
 	href="../fonts/OLD/font-awesome.css">
 <link rel="stylesheet" type="text/css"
 	href="../fonts/OLD/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body background="../images/street.jpg">
 	<div class="">
@@ -71,106 +72,110 @@
 		<br /> <br /> <br /> <br />
 
 		<!-- Editar Juego FORM -->
-		<div class="main-login main-center">
-			<form class="form-horizontal" method="post" action="../EditarJuego">
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<div class="main-login main-center">
+						<form class="form-horizontal" method="post"
+							action="../EditarJuego">
 
-				<div class="form-group">
-					<label for="titulo" class="cols-sm-2 control-label"> Titulo
-						Juego </label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="titulo" id="titulo" required="required"
-								value="<%=juegoActualizar.getTitulo()%>" />
-						</div>
+							<div class="form-group">
+								<label for="titulo" class="cols-sm-2 control-label">
+									Titulo Juego </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fas fa-gamepad"></i></span> <input
+											type="text" class="form-control" name="titulo" id="titulo"
+											required="required" value="<%=juegoActualizar.getTitulo()%>" />
+									</div>
+								</div>
+							</div>
+
+							<input type="hidden" class="form-control" name="idJuego"
+								id="idJuego" required="required" value="<%=m%>" />
+
+							<div class="form-group">
+								<label for="numJugadores" class="cols-sm-2 control-label">Numero
+									de Jugadores </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fab fa-playstation"></i></span> <input
+											type="text" required="required" class="form-control"
+											name="numJugadores" id="numJugadores"
+											value="<%=juegoActualizar.getNumJugadores()%>" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="descripcion" class="cols-sm-2 control-label">Una
+									pequeña descripción</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fas fa-font"></i></span> <input
+											type="text" class="form-control" name="descripcion"
+											id="descripcion" required="required"
+											value="<%=juegoActualizar.getDescripcion()%>" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Pegi
+									(Edad Orientada) </label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+											type="number" required="required" class="form-control"
+											name="pegi" min="3" max="18" id="pegi"
+											value="<%=juegoActualizar.getPegi()%>" />
+									</div>
+								</div>
+							</div>
+
+							<!-- Simepre esta seleccionado por defecto Terror -->
+							<div class="form-group">
+								<label class="col-xs-3 control-label">Genero</label>
+								<div class="col-xs-5 selectContainer">
+									<select class="form-control" name="genero">
+
+										<%
+											if (esNulo2) {
+													for (Genero g : generos) {
+										%>
+										<%
+											if (g.getIdGenero() == idGeneroObtenido) {
+										%>
+										<option selected value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+										<%
+											} else
+										%>
+
+										<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
+
+
+
+										<%
+											}
+												}
+										%>
+
+									</select>
+								</div>
+							</div>
+
+
+							<div class="form-group ">
+								<button type="submit"
+									class="btn btn-primary btn-lg btn-block login-button">Actualizar
+								</button>
+							</div>
+
+						</form>
 					</div>
 				</div>
-
-				<input type="hidden" class="form-control" name="idJuego"
-					id="idJuego" required="required" value="<%=m%>" />
-
-				<div class="form-group">
-					<label for="numJugadores" class="cols-sm-2 control-label">Numero
-						de Jugadores </label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-								type="text" required="required" class="form-control"
-								name="numJugadores" id="numJugadores"
-								value="<%=juegoActualizar.getNumJugadores()%>" />
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="descripcion" class="cols-sm-2 control-label">Una
-						pequeña descripción</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="descripcion" id="descripcion" required="required"
-								value="<%=juegoActualizar.getDescripcion()%>" />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Pegi
-						(Edad Orientada) </label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="number" required="required" class="form-control"
-								name="pegi" min="3" max="19" id="pegi"
-								value="<%=juegoActualizar.getPegi()%>" />
-						</div>
-					</div>
-				</div>
-
-				<!-- Simepre esta seleccionado por defecto Terror -->
-				<div class="form-group">
-					<label class="col-xs-3 control-label">Genero</label>
-					<div class="col-xs-5 selectContainer">
-						<select class="form-control" name="genero">
-
-							<%
-								if (esNulo2) {
-										for (Genero g : generos) {
-							%>
-							<%
-								if (g.getIdGenero() == idGeneroObtenido) {
-							%>
-							<option selected value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
-							<%
-								} else
-							%>
-
-							<option value="<%=g.getIdGenero()%>"><%=g.getNombreGenero()%></option>
-
-
-
-							<%
-								}
-									}
-							%>
-
-						</select>
-					</div>
-				</div>
-
-
-				<div class="form-group ">
-					<button type="submit"
-						class="btn btn-primary btn-lg btn-block login-button">Actualizar
-					</button>
-				</div>
-
-			</form>
+			</div>
 		</div>
-
 
 
 

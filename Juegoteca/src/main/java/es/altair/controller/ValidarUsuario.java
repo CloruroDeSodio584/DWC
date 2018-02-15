@@ -59,12 +59,6 @@ public class ValidarUsuario extends HttpServlet {
 				
 				response.sendRedirect("jsp/principalAdmin.jsp");
 				break;
-			case 0:
-				// Usuario Normal
-				System.out.println("USUARIO NORMAL");
-
-				response.sendRedirect("jsp/principalUsu.jsp");
-				break;
 		
 			default:
 				break;

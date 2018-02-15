@@ -18,7 +18,7 @@
 <title>Juegoteca Coleccion</title>
 <!-- BOOTSTRAP CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link href="css/CSS_Propio.css" rel="stylesheet" type="text/css" />
+<link href="../css/CSS_Propio.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css"
 	href="../fonts/OLD/font-awesome.css">
 <link rel="stylesheet" type="text/css"
@@ -185,9 +185,9 @@
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
-									<div class="modal-body">
+									<div class="modal-body"> <p>
 										¿Desea borrar el juego
-										<%=j.getTitulo()%>?
+										<%=j.getTitulo()%>? </p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"

@@ -28,7 +28,10 @@ background-color: #0069d9;
 font-size:50px;
 
 }
-h5,p {
+p {
+	color: black;
+}
+h5 {
 	color: red;
 }
 body{

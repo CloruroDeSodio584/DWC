@@ -36,14 +36,15 @@ public class EditarUsuario extends HttpServlet {
 		
 		UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
 		Usuario usu = uDAO.obtenerUsuarioPorId(idUsuario);
-		Usuario u = new Usuario(nombre, apellidos, edad, correo, usu.getPassword(), 1);
+		//Usuario u = new Usuario(nombre, apellidos, edad, correo, usu.getPassword(), 1);
 		
-		int filas;
+		System.out.println(usu.toString());
+		
 		String msg ="";
 		
 		if(usu.getCorreo() == correo) {
 		
-		if(uDAO.validarEmail(u)) {
+		if(uDAO.validarEmail(usu)) {
 			
 			usu.setNombre(nombre);
 			usu.setApellidos(apellidos);
@@ -52,9 +53,7 @@ public class EditarUsuario extends HttpServlet {
 		
 			uDAO.ActualizarUsuario(usu);
 	    	
-			if(usu != u)
-				 response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario ha sido actualizado");
-			else response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario no ha sido actualizado");
+			 response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario ha sido actualizado");			
 			
 		} else
 			msg ="Email ya registrado";
@@ -67,10 +66,9 @@ public class EditarUsuario extends HttpServlet {
 			usu.setCorreo(correo);
 		
 			uDAO.ActualizarUsuario(usu);
-	    	
-			if(usu != u)
-				 response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario ha sido actualizado");
-			else response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario no ha sido actualizado");
+	    			
+     		 response.sendRedirect("jsp/juegotecaAdmin.jsp?mensaje=El usuario ha sido actualizado");
+
 		}
 			
 			

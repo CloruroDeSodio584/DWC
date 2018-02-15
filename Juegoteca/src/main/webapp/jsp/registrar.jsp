@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../fonts/OLD/font-awesome.css">
 <link rel="stylesheet" type="text/css"
 	href="../fonts/OLD/font-awesome.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 </head>
 <body background="../images/top.jpg">
@@ -24,6 +25,7 @@
 					<hr />
 				</div>
 			</div>
+		
 			<div class="main-login main-center">
 				<form class="form-horizontal" method="post" action="../RegistrarUsuario" >
 
@@ -45,8 +47,7 @@
 							</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+								<span class="input-group-addon"><i class="far fa-user"></i></span> <input
 									type="text" required="required" class="form-control" name="apellidos" id="apellidos"
 									placeholder="Escribe tus apellidos" />
 							</div>
@@ -58,7 +59,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span> <input type="number" class="form-control"
-									name="edad" id="edad" required="required" placeholder="Escribe tu edad" />
+									name="edad" id="edad" required="required"  min="14" max="99" placeholder="Escribe tu edad" />
 							</div>
 						</div>
 					</div>
@@ -68,8 +69,7 @@
 							</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+								<span class="input-group-addon"><i class="fas fa-envelope"></i></span> <input
 									type="email" required="required" class="form-control" name="correo"
 									id="correo" placeholder="Correo" />
 							</div>
